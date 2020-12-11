@@ -18,28 +18,34 @@ int nok(int a, int b )
 
 	return  a*b/nod(a,b);
 }
-int cancel(int k,int m)
-{ int c=nod(k,m),k1,m1;
-  k1=k/c;
-  m1=m/c;
+void cancel(int a,int b,int *p,int *q)
+{
+  *p=a/nod(a,b);
+  *q=b/nod(a,b);
 
-  return printf("%d/%d\n",k1,m1);
 }
+
+
+
+
+
+
 
 int main()
 
 {   setlocale(LC_ALL,"Rus");
     float x,y,z,n;
-    int q1,q2,w1,w2,s,e,r1,r2,f;
+    int a,b,c,d,p=0,q=0;
     printf("Задание №1-Определите НОК трех натуральных чисел. Использовать функции НОД(a, b) и НОК(a, b)\nУказание: НОК(a, b) = a * b / НОД(a, b).\n (Задание 5 из 4-го таска)\n");
     printf("Задание №2-Найти сумму двух дробей a/b и c/d. Ответ записать обыкновенной дробью.\nУказание: написать функцию cancel(a, b, p, q), которая дробь a / b приводит к несократимому виду p / q .\n (Задание 6 из 4-го таска)\n");
-    int p=1;
+    int l=1;
+    printf("|Для выхода введите 0|\n");
     printf("\n");
-    while (p!=0) //введёте 0-выход из программы
+    while (l!=0) //введёте 0-выход из программы
     {
      printf("Выберите номер задания:");
-     scanf("%d",&p);
-     switch(p) //выбрать задание 1 или 2
+     scanf("%d",&l);
+     switch(l) //выбрать задание 1 или 2
      {
          case 1:
              printf("Введите первое число=");
@@ -53,21 +59,18 @@ int main()
              printf("\n");
              break;
          case 2:
-             printf("Введите числитель первой дроби=");
-             scanf("%d",&q1);
-             printf("Введите знаменатель первой дроби=");
-             scanf("%d",&q2);
-             printf("Введите числитель второй дроби=");
-             scanf("%d",&w1);
-             printf("Введите знаменатель второй дроби=");
-             scanf("%d",&w2);
-             e=nok(q2,w2);
-             r1=e/q2;
-             r2=e/w2;
-             s=q1*r1+w1*r2;
-             printf("Сумма дроби:S=");
-             cancel(s,e);
+             printf("Введите числитель первой дроби:");
+             scanf("%d",&a);
+             printf("Введите знаменатель первой дроби:");
+             scanf("%d",&b);
+             printf("Введите числитель второй дроби:");
+             scanf("%d",&c);
+             printf("Введите знаменатель второй дроби:");
+             scanf("%d",&d);
+             cancel(a*d+b*c,b*d,&p,&q);
+             printf("Сумма равна:%d/%d\n",p,q);
              printf("\n");
+
              break;
 
     }
